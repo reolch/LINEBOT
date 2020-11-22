@@ -12,7 +12,7 @@ const config = {
 
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello LINE BOT!(GET)')); //ブラウザ確認用(無くても問題ない)
+app.get('/', (req, res) => res.send('Hello LINE BOT!(GET)'));
 
 app.post('/webhook', line.middleware(config), (req, res) => {
     console.log(req.body.events);
@@ -34,7 +34,7 @@ async function handleEvent(event) {
   replyText = text;
   return client.replyMessage(event.replyToken, {
     type: 'text',
-    text: replyText //実際に返信の言葉を入れる箇所
+    text: replyText
   });
 }
 

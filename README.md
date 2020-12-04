@@ -1,8 +1,8 @@
 # LINEBOT
 
 ## 環境変数の設定
-set LINE_ACCESS_TOKEN=**************
-set LINE_SECRET_TOKEN=**************
+set LINE_ACCESS_TOKEN=**************  
+set LINE_SECRET_TOKEN=**************  
 
 ## 以下の手順で動作します。
 

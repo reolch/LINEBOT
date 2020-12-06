@@ -30,7 +30,7 @@ async function handleEvent(event) {
    
     var replyText = '';
   // var text = fs.readFileSync("./server.js", 'utf8');
-    var text = await scTest();
+    var text = await scTest(event);
   //   var lines = text.toString().split('\n');
     replyText = text;
   
@@ -40,11 +40,11 @@ async function handleEvent(event) {
     });
 }
 
-async function scTest() {
+async function scTest(event) {
     const options = {
         ////////////// 読み込みの高速化を図るためのオプション ////////////
-        // headless: false,                                         //
-        // slowMo: 100,                                             //
+        headless: false,                                         //
+        slowMo: 100,                                             //
         //////////////////////////////////////////////////////////////
         args: [
             '--disable-gpu',
@@ -69,8 +69,10 @@ async function scTest() {
     }
     });
     
-    await page.goto('https://math.cs.kitami-it.ac.jp/~kouno/sotuken/04/maeda/mathml.html');
-    const xpath = '/html/body/h2[1]';
+    const url = 'https://www.uta-net.com/search/?Keyword='+ event.message.text +'&Aselect=2&Bselect=3'
+    await page.goto(url);
+    page.click('#ichiran > div.result_table.last > table > tbody > tr:nth-child(1) > td.side.td1 > a')
+    const xpath = '//*[@id="kashi_area"]';
     await page.waitForXPath(xpath);
     const elems = await page.$x(xpath);
     console.log(elems);

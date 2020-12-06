@@ -6,6 +6,8 @@ set LINE_SECRET_TOKEN=**************
 
 ## 以下の手順で動作します。
 
+1. npm install express
+1. npm install puppetter
 1. npm i @line/bot-sdk express
 1. Line Webhook setting
 1. ngrok http 3000
